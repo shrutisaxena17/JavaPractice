@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Main{
     void arrangeNegOnLeft(){
         int arr[]={-1,8,-2,9,10,-5,4};
@@ -74,6 +76,33 @@ class Main{
         }
         System.out.println("Distinct Elements: "+j);
     }
+
+    void rotateArrayandFindMin(){
+        int arr[]={1,2,3,4,5,6,7};
+        int k=2;
+        //rotate arr
+        reverseArray(arr,0,arr.length-1);
+        reverseArray(arr, 0, k);
+        reverseArray(arr, k+1, arr.length-1);
+        System.out.println(Arrays.toString(arr));
+        //find min in a rotated array using binary search4
+        findMinRotatedArray(arr);
+            }
+        
+   void findMinRotatedArray(int[] arr) {
+    
+    }
+        
+    void reverseArray(int arr[],int start,int end){
+        while(start<end)
+        { 
+            int temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+    }
 }
 public class ArrayPractise{
 public static void main(String[] args) {
@@ -85,5 +114,7 @@ public static void main(String[] args) {
     m.arrangeZeroesToLeft();
     System.out.println("Next Answer:");
     m.removeDuplicatesAndCountDistinct();
+    System.out.println("Next Answer:");
+    m.rotateArrayandFindMin();
 }
 }
