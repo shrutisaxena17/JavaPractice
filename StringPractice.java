@@ -143,12 +143,24 @@ class StringExamples {
             freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
         }
         List<Character> charList = new ArrayList<>(freqMap.keySet());
-        charList.sort((a, b) -> freqMap.get(b) - freqMap.get(a)); // Sort by frequency
+        charList.sort((a, b) -> freqMap.get(b) - freqMap.get(a));
         StringBuilder result = new StringBuilder();
         for (char c : charList) {
             result.append(String.valueOf(c).repeat(freqMap.get(c)));
         }
         return result.toString();
+    }
+
+    public void findFirstNonRepeatedCharacter(){
+        String str="aabbcccdddefffggg";
+        Map<String,Long> mapFreq=Stream.of(str.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        mapFreq.entrySet().stream().filter(entry->entry.getValue()==1).forEach(System.out::println);
+    }
+
+    public void countVowelsAndConsonants(){
+        String str="ShrutiSaxena";
+        long count = Stream.of(str.split("")).filter(s->"aeiou".contains(s.toLowerCase())).count();
+        System.out.println("Number of vowels: "+count+" Number of Consonants: "+((str.length())-count));
     }
 }
 
@@ -169,5 +181,7 @@ public class StringPractice {
         s.StringAnagram();
         String result = s.sortStringByFrequency("eert");
         System.out.println(result);
+        s.findFirstNonRepeatedCharacter();
+        s.countVowelsAndConsonants();
     }
 }

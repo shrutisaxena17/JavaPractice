@@ -270,6 +270,27 @@ int arrayRotationTimes(){
     }
     return index;
 }
+
+public void mergeTwoSortedArray(){
+    int arr1[]={1,3,5,7};
+    int arr2[]={0,2,6,8,9};
+    int n=arr1.length-1;
+    for(int i=n,j=0;i>=0 && j<=arr2.length-1;i--,j++){
+        if(arr1[i]>arr2[j]){
+            int temp=arr1[i];
+            arr1[i]=arr2[j];
+            arr2[j]=temp;
+        }
+    }
+    Arrays.sort(arr1);
+    Arrays.sort(arr2);
+    for(int i:arr1){
+        System.out.println(i);
+    }
+    for(int i:arr2){
+        System.out.println(i);
+    }
+}
 }
 public class ArrayPractise{
 public static void main(String[] args) {
@@ -299,6 +320,7 @@ public static void main(String[] args) {
     System.out.println("Next Answer:");
     int index=m.arrayRotationTimes();
     System.out.println("Array has been rotated " +index+" times");
-
+    System.out.println("Next Answer:");
+    m.mergeTwoSortedArray();
 }
 }
